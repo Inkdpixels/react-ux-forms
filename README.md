@@ -1,9 +1,9 @@
 # react-ux-forms
 [![Build Status](https://travis-ci.org/Inkdpixels/react-ux-forms.svg?branch=master)](https://travis-ci.org/Inkdpixels/react-ux-forms)
-[![dependencies Status](https://david-dm.org/Inkdpixels/react-ux-forms/status.svg)](https://david-dm.org/Inkdpixels/react-ux-forms)
+[![peerDependencies Status](https://david-dm.org/Inkdpixels/react-ux-forms/peer-status.svg)](https://david-dm.org/Inkdpixels/react-ux-forms?type=peer)
 [![devDependency Status](https://david-dm.org/Inkdpixels/react-ux-forms/dev-status.svg)](https://david-dm.org/Inkdpixels/react-ux-forms#info=devDependencies)
 
-> react-ux-forms is a style and component agnostic <Form/> React.Component which handles the user feedback and validation in a UX oriented, less disturbing way.
+> react-ux-forms is a style and component agnostic `<Form/>` React.Component which handles the user feedback and validation in a UX oriented, less disturbing way.
 
 ## Why would you even bother reading this `README.md` further?
 #### react-ux-forms starts with the basic features you need:
@@ -157,7 +157,7 @@ The React elements that get recursively traversed and rendered. Note that you sh
 The `<Form.Item/>` component is the second pillar of this package. Use it to express your form items, note that props like `onChange` and `onBlur` are overridden internally, use the `onChange` on the `<Form/>` instead.
 
 ##### `props.Component`
-The component that gets rendered, add any additional prop to the `<Form.Item/>` gets propagated to the specified component.
+The component that gets rendered, any additional props to the `<Form.Item/>` will getpropagated to the specified component.
 
 ##### `props.id`
 The identifier under which the `<Form/>` will lookup the `value` and `rules`.
@@ -172,7 +172,7 @@ Use the `<Form.Section/>` component if you want to structure your Form using gri
 We introduced this component to keep the recursive lookup for `<Form.Item/>`'s as small as possible.
 
 ##### `props.Component`
-The component that gets rendered, add any additional prop to the `<Form.Item/>` gets propagated to the specified component.
+The component that gets rendered, any additional props to the `<Form.Item/>` will get propagated to the specified component.
 
 
 
