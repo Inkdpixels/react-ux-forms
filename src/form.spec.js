@@ -20,6 +20,7 @@ const createWrapper = (props = {}) => shallow(
 		{...props}
 		>
 		<Section Component={Component}>
+			{null}
 			Foo bar
 			<Item
 				Component={Input}

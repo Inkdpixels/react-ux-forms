@@ -169,11 +169,13 @@ class Form extends Component {
 
 	renderChildren(children) {
 		return React.Children.map(children, (child, index) => {
-			const {type, props} = child;
+			if (!child) {
+				return child;
+			}
 
-			switch (type) {
+			switch (child.type) {
 				case Section: {
-					const {children, Component, ...rest} = props;
+					const {children, Component, ...rest} = child.props;
 
 					return (
 						<Component {...rest}>
