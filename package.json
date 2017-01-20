@@ -8,7 +8,8 @@
     "lint": "eslint src",
     "start": "echo 'todo'",
     "test": "cross-env NODE_ENV=test nyc ava",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "ava": {
     "concurrency": 5,
@@ -32,11 +33,17 @@
       "src/**"
     ]
   },
+  "release": {
+    "analyzeCommits": "@inkdpixels/commit-analyzer",
+    "generateNotes": "@inkdpixels/release-notes-generator"
+  },
   "peerDependencies": {
     "react": "^15.4.0",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
+    "@inkdpixels/commit-analyzer": "^1.0.0",
+    "@inkdpixels/release-notes-generator": "^1.0.0",
     "ava": "^0.17.0",
     "babel-cli": "^6.8.0",
     "babel-core": "^6.8.0",
@@ -61,16 +68,17 @@
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.0",
     "rimraf": "^2.5.2",
-    "sinon": "^1.17.3"
+    "sinon": "^1.17.3",
+    "semantic-release": "^6.3.2"
   },
   "name": "react-ux-forms",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "description": "A UX oriented, style and custom component agnostic <Form/> API Component for React.",
   "main": "lib/index.js",
   "homepage": "https://github.com/Inkdpixels/react-ux-forms#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Inkdpixels/react-ux-forms.git"
+    "url": "https://github.com/Inkdpixels/react-ux-forms.git"
   },
   "keywords": [
     "react",
