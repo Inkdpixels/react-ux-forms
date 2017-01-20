@@ -125,7 +125,7 @@ test('<Form/>().validateIdAndValuePair()', t => {
 		rulesById: {
 			foo: [{
 				test: val => val !== 'baz',
-				severity: Form.severitiesByKey.warning
+				severity: 'warning'
 			}]
 		},
 		valuesById: {
@@ -146,7 +146,7 @@ test('<Form/>().validateAll()', t => {
 		rulesById: {
 			foo: [{
 				test: val => val !== 'baz',
-				severity: Form.severitiesByKey.warning
+				severity: 'warning'
 			}]
 		},
 		valuesById: {
@@ -161,7 +161,7 @@ test('<Form/>().validateAll()', t => {
 			rulesById: {
 				foo: [{
 					test: val => val !== 'baz',
-					severity: Form.severitiesByKey.warning
+					severity: 'warning'
 				}],
 				bar: [{
 					test: val => val !== 'baz',
