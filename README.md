@@ -1,6 +1,7 @@
 # react-ux-forms
 [![Build Status](https://travis-ci.org/Inkdpixels/react-ux-forms.svg?branch=master)](https://travis-ci.org/Inkdpixels/react-ux-forms)
-[![Dependency Status](https://dependencyci.com/github/Inkdpixels/react-ux-forms/badge)](https://dependencyci.com/github/Inkdpixels/react-ux-forms)
+[![dependencies Status](https://david-dm.org/Inkdpixels/react-ux-forms/status.svg)](https://david-dm.org/Inkdpixels/react-ux-forms)
+[![devDependency Status](https://david-dm.org/Inkdpixels/react-ux-forms/dev-status.svg)](https://david-dm.org/Inkdpixels/react-ux-forms#info=devDependencies)
 
 > react-ux-forms is a style and component agnostic <Form/> React.Component which handles the user feedback and validation in a UX oriented, less disturbing way.
 
