@@ -1,8 +1,5 @@
 const severitiesByKey = {
-	error: 'error',
-	warning: 'warning',
-	info: 'info',
-	success: 'success'
+	error: 'error'
 };
 const validator = function (opts = {}) {
 	const {

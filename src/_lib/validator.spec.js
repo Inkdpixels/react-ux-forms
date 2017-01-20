@@ -4,9 +4,6 @@ import {severitiesByKey, validator} from './validator.js';
 test('severitiesByKey', t => {
 	t.is(typeof severitiesByKey, 'object', 'should be an object');
 	t.truthy(severitiesByKey.error, 'should contain an `error` property');
-	t.truthy(severitiesByKey.info, 'should contain an `info` property');
-	t.truthy(severitiesByKey.warning, 'should contain an `warning` property');
-	t.truthy(severitiesByKey.success, 'should contain an `success` property');
 });
 
 test('validator()', t => {
