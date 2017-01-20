@@ -1,0 +1,89 @@
+{
+  "scripts": {
+    "prepublish": "npm run build",
+    "prebuild": "npm run clean",
+    "build": "cross-env NODE_ENV=production npm run babel",
+    "babel": "babel ./src --out-dir ./lib",
+    "clean": "rimraf ./lib",
+    "lint": "eslint src",
+    "start": "echo 'todo'",
+    "test": "cross-env NODE_ENV=test nyc ava",
+    "test:watch": "npm run test -- --watch"
+  },
+  "ava": {
+    "concurrency": 5,
+    "files": [
+      "src/**/*.spec.js"
+    ],
+    "failFast": true,
+    "verbose": true,
+    "require": [
+      "babel-register",
+      "babel-polyfill"
+    ],
+    "babel": "inherit"
+  },
+  "nyc": {
+    "exclude": [
+      "src/**/*.spec.js",
+      "examples/**/*"
+    ],
+    "include": [
+      "src/**"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^15.4.0",
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "babel-cli": "^6.8.0",
+    "babel-core": "^6.8.0",
+    "babel-eslint": "^7.0.0",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-plugin-transform-runtime": "^6.3.13",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-es2015": "^6.13.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "cross-env": "^3.0.0",
+    "enzyme": "^2.0.0",
+    "eslint": "^3.10.2",
+    "eslint-config-xo": "^0.17.0",
+    "eslint-config-xo-react": "^0.10.0",
+    "eslint-plugin-babel": "^4.0.0",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-react": "^6.7.1",
+    "lodash": "^4.17.4",
+    "nyc": "^10.1.2",
+    "react": "^15.4.0",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.0",
+    "rimraf": "^2.5.2",
+    "sinon": "^1.17.3"
+  },
+  "name": "react-ux-forms",
+  "version": "0.0.1",
+  "description": "A UX oriented, style and custom component agnostic <Form/> API Component for React.",
+  "main": "lib/index.js",
+  "homepage": "https://github.com/Inkdpixels/react-ux-forms#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Inkdpixels/react-ux-forms.git"
+  },
+  "keywords": [
+    "react",
+    "ux",
+    "form",
+    "forms",
+    "input",
+    "validation",
+    "ui"
+  ],
+  "author": "Tyll Weiß",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Inkdpixels/react-ux-forms/issues"
+  }
+}

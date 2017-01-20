@@ -1,0 +1,15 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "xo",
+    "xo-react"
+  ],
+  "env": {
+    "browser" : true
+  },
+  "rules": {
+      "react/jsx-boolean-value": 0,
+      "react/jsx-filename-extension": 0,
+      "react/forbid-component-props": 1
+  }
+}
