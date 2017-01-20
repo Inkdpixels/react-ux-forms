@@ -283,9 +283,7 @@ class Form extends Component {
 			const value = valuesById[id];
 			const cb = () => this.validateIdAndValuePair(id, value);
 
-			return promise
-				.then(cb)
-				.catch(cb);
+			return promise.then(cb);
 		}, Promise.resolve());
 	}
 
