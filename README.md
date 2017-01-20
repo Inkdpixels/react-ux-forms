@@ -162,6 +162,10 @@ The component that gets rendered, add any additional prop to the `<Form.Item/>` 
 ##### `props.id`
 The identifier under which the `<Form/>` will lookup the `value` and `rules`.
 
+##### `props.invalidPropName`
+The prop name which will be used to propagate an additional prop to your target component that indicates if the validation result is fatal (error) or not.
+If you don't want this prop to be specified at all, pass in either `null`, `false`, `undefined` or an empty string.
+
 
 #### `<Form.Section/>`
 Use the `<Form.Section/>` component if you want to structure your Form using grids or boxes, note that this component will just render your specified Component, no additional HTML.

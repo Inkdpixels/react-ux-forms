@@ -63,10 +63,13 @@ test('<Form/>', t => {
 
 	wrapper.setState({
 		validationResultsById: {
-			'form-textinput-1': {foo: 'bar'},
-			'form-textinput-2': {foo: 'baz'}
+			'form-textinput-1': {isValid: false, foo: 'bar', severity: 'error'},
+			'form-textinput-2': {isValid: false, foo: 'baz', severity: 'info'}
 		}
 	});
+
+	t.is(wrapper.find(Item).at(0).prop('isValidationResultFatal'), true, 'should propagate a truthy `isValidationResultFatal` prop to the <Form.Item/> if the validation result is fatal.');
+	t.is(wrapper.find(Item).at(1).prop('isValidationResultFatal'), false, 'should propagate a falsy `isValidationResultFatal` prop to the <Form.Item/> if the validation result is not fatal.');
 
 	t.is(wrapper.find(ValidationMessage).at(0).prop('foo'), 'bar', 'should propagate the validationResultsById object for the current <Form.Item/> component to its <ValidationMessageComponent/> component.');
 	t.is(wrapper.find(ValidationMessage).at(1).prop('foo'), 'baz', 'should propagate the validationResultsById object for the current <Form.Item/> component to its <ValidationMessageComponent/> component.');
@@ -91,6 +94,15 @@ test('<Form/>().isIdValidatable()', t => {
 	wrapper = createWrapper({onChangeValidationIds: ['bar']});
 
 	t.true(wrapper.instance().isIdValidatable('bar'), 'should return `true` if the given id is in the props `onChangeValidationIds` array');
+});
+
+test('<Form/>().isValidationResultFatal()', t => {
+	let wrapper = createWrapper();
+
+	t.is(typeof wrapper.instance().isValidationResultFatal, 'function');
+	t.false(wrapper.instance().isValidationResultFatal({isValid: true}), 'should return `false` if the given result.isValid property is truthy');
+	t.false(wrapper.instance().isValidationResultFatal({isValid: false}), 'should return `false` if the given result.isValid property equals false but the severity does not equal "error"');
+	t.true(wrapper.instance().isValidationResultFatal({isValid: false, severity: 'error'}), 'should return `true` if the given result.isValid property equals and the severity does equal "error"');
 });
 
 test('<Form/>().validateIdAndValuePair()', t => {

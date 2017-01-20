@@ -104,13 +104,13 @@ class Form extends Component {
 		 */
 		actionsWrapperProps: PropTypes.object,
 
-		children: PropTypes.node.isRequired,
-
 		/**
 		 * If your editor does not support the onBlur prop, and you want to validate every time the `onChange` handler fires,
 		 * add the associated id to this array.
 		 */
-		onChangeValidationIds: PropTypes.array
+		onChangeValidationIds: PropTypes.array,
+
+		children: PropTypes.node.isRequired
 	};
 
 	static defaultProps = {
@@ -190,18 +190,21 @@ class Form extends Component {
 	}
 
 	renderFormItem(child, index) {
+		const {id} = child.props;
 		const {ValidationMessageComponent, itemWrapperProps} = this.props;
-		const validationResults = this.state.validationResultsById[child.props.id] || {};
+		const validationResult = this.state.validationResultsById[id] || {};
+		const isValidationResultFatal = this.isValidationResultFatal(validationResult);
 
 		return (
 			<div {...itemWrapperProps}>
 				<Item
 					{...child.props}
 					key={index}
+					isValidationResultFatal={isValidationResultFatal}
 					onChange={this.handleChange}
 					onBlur={this.handleBlur}
 					/>
-				<ValidationMessageComponent {...validationResults}/>
+				<ValidationMessageComponent {...validationResult}/>
 			</div>
 		);
 	}
@@ -237,14 +240,19 @@ class Form extends Component {
 		return this.state.validatableIds.includes(id) || this.props.onChangeValidationIds.includes(id);
 	}
 
+	isValidationResultFatal(result) {
+		const {isValid, severity} = result;
+
+		return isValid === false && severity === severitiesByKey.error;
+	}
+
 	validateIdAndValuePair(id, value) {
 		const {validationResultsById} = this.state;
-		const results = validator({
+		const validationResult = validator({
 			rules: this.props.rulesById[id],
 			value
 		});
-		const {isValid, severity} = results;
-		const isInValid = isValid === false && severity === severitiesByKey.error;
+		const isValidationResultFatal = this.isValidationResultFatal(validationResult);
 
 		return new Promise((resolve, reject) => {
 			this.setState({
@@ -252,12 +260,12 @@ class Form extends Component {
 					{},
 					validationResultsById,
 					{
-						[id]: results
+						[id]: validationResult
 					}
 				)
 			}, () => {
-				if (isInValid) {
-					reject(results);
+				if (isValidationResultFatal) {
+					reject(validationResult);
 				} else {
 					resolve();
 				}

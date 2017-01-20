@@ -7,12 +7,13 @@ import Item from './item';
 test('<Form.Item/>', t => {
 	t.is(typeof Item, 'function');
 
-	const Component = props => <div {...props}/>;
-	const wrapper = shallow(
+	let Component = props => <div {...props}/>;
+	let wrapper = shallow(
 		<Item
 			id="foo-id"
 			title="bar"
 			Component={Component}
+			invalidPropName={null}
 			>
 			Foo bar
 		</Item>
@@ -24,6 +25,18 @@ test('<Form.Item/>', t => {
 	t.is(wrapper.prop('title'), 'bar', 'should propagate the unknown props to the Component.');
 	t.is(wrapper.prop('onChange'), wrapper.instance().handleChange, 'should propagate the instances handleChange() method to the Component.');
 	t.is(wrapper.prop('onBlur'), wrapper.instance().handleBlur, 'should propagate the instances handleBlur() method to the Component.');
+
+	Component = props => <input {...props}/>;
+	wrapper = shallow(
+		<Item
+			id="foo-id"
+			Component={Component}
+			invalidPropName="invalid"
+			isValidationResultFatal={true}
+			/>
+	);
+
+	t.is(wrapper.find(Component).prop('invalid'), true, 'should propagate the `isValidationResultFatal` prop under the given `invalidPropName` name to the component');
 });
 
 test('<Form.Item/>().handleChange()', t => {
@@ -36,6 +49,7 @@ test('<Form.Item/>().handleChange()', t => {
 			Component={Component}
 			onChange={onChange}
 			onBlur={onBlur}
+			invalidPropName={null}
 			/>
 	);
 
@@ -58,6 +72,7 @@ test('<Form.Item/>().handleBlur()', t => {
 			Component={Component}
 			onChange={onChange}
 			onBlur={onBlur}
+			invalidPropName={null}
 			/>
 	);
 
