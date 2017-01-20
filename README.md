@@ -3,7 +3,7 @@
 [![dependencies Status](https://david-dm.org/Inkdpixels/react-ux-forms/status.svg)](https://david-dm.org/Inkdpixels/react-ux-forms)
 [![devDependency Status](https://david-dm.org/Inkdpixels/react-ux-forms/dev-status.svg)](https://david-dm.org/Inkdpixels/react-ux-forms#info=devDependencies)
 
-> react-ux-forms is a style and component agnostic <Form/> React.Component which handles the user feedback and validation in a UX oriented, less disturbing way.
+> react-ux-forms is a style and component agnostic `<Form/>` React.Component which handles the user feedback and validation in a UX oriented, less disturbing way.
 
 ## Why would you even bother reading this `README.md` further?
 #### react-ux-forms starts with the basic features you need:
