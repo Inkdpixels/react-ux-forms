@@ -249,7 +249,6 @@ class Form extends Component {
 	}
 
 	validateIdAndValuePair(id, value) {
-		const {validationResultsById} = this.state;
 		const validationResult = validator({
 			rules: this.props.rulesById[id],
 			value
@@ -257,15 +256,15 @@ class Form extends Component {
 		const isValidationResultFatal = this.isValidationResultFatal(validationResult);
 
 		return new Promise((resolve, reject) => {
-			this.setState({
+			this.setState(prevState => ({
 				validationResultsById: Object.assign(
 					{},
-					validationResultsById,
+					prevState.validationResultsById,
 					{
 						[id]: validationResult
 					}
 				)
-			}, () => {
+			}), () => {
 				if (isValidationResultFatal) {
 					reject(validationResult);
 				} else {
