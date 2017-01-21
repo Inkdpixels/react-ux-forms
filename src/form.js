@@ -279,12 +279,9 @@ class Form extends Component {
 		const {rulesById, valuesById} = this.props;
 		const ids = Object.keys(rulesById);
 
-		return ids.reduce((promise, id) => {
-			const value = valuesById[id];
-			const cb = () => this.validateIdAndValuePair(id, value);
-
-			return promise.then(cb);
-		}, Promise.resolve());
+		return Promise.all(
+			ids.map(id => this.validateIdAndValuePair(id, valuesById[id]))
+		);
 	}
 
 	handleChange(id, value) {
