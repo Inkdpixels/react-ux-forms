@@ -61,7 +61,7 @@
     "eslint-config-xo-react": "^0.10.0",
     "eslint-plugin-babel": "^4.0.0",
     "eslint-plugin-promise": "^3.4.0",
-    "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-react": "^7.5.0",
     "lodash": "^4.17.4",
     "nyc": "^11.0.1",
     "react": "^15.4.0",
