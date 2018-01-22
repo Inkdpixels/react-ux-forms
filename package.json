@@ -69,7 +69,7 @@
     "react-dom": "^15.4.0",
     "rimraf": "^2.5.2",
     "sinon": "^4.0.0",
-    "semantic-release": "^11.0.2"
+    "semantic-release": "^12.2.4"
   },
   "name": "react-ux-forms",
   "version": "0.0.0-development",
