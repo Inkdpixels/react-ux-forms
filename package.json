@@ -68,7 +68,7 @@
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.0",
     "rimraf": "^2.5.2",
-    "sinon": "^4.0.0",
+    "sinon": "^4.2.1",
     "semantic-release": "^11.0.2"
   },
   "name": "react-ux-forms",
